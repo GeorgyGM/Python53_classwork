@@ -1,20 +1,31 @@
-min1=int(input("введите начало диапазона 1"))
-max1=int(input("введите начало диапазона 1"))
-min2=int(input("введите начало диапазона 2"))
-max2=int(input("введите начало диапазона 2"))
-min3=int(input("введите начало диапазона 3"))
-max3=int(input("введите начало диапазона 3"))
-n = int(input("введите число"))
-if min1>max1:
-    min1,max1=max1,min1
-if min2>max2:
-    min2,max2=max2,min2
-if min3>max3:
-    min3,max3=max3,min3
+import random
 
-counter=0
-if min1<=n<=max1: counter+=1
-if min2<=n<=max2: counter+=1
-if min3<=n<=max3: counter+=1
-
-print(counter)
+pc_num = random.randint(0, 100)
+count = 1
+game_count = 0
+print(pc_num)
+best_result = 101
+best_game=0
+while True:
+    game_count += 1
+    while True:
+        if count == 6:
+            print("попытки израсходованы. Вы проиграли")
+            break
+        n = int(input("введите число"))
+        if pc_num == n:
+            print(f"вы угадали за {count} раз")
+            if best_result > count:
+                best_result = count
+                best_game=game_count
+            break
+        elif pc_num < n:
+            print("загаданное число меньше")
+        else:
+            print("загаданное число больше")
+        count += 1
+    again = input("введите y если хотите сыграть еще? ")
+    if again != "y":
+        break
+print(f"ваш лучший результат {best_result} был в игре № {best_game}\n"
+      f"количество сыгранных партий {game_count}")
