@@ -110,3 +110,13 @@ import random
 # while n in list6:
 #     list6.remove(n)
 # print(list6)
+def remove_elements(_list, index, n):
+    for i in range (n):
+        _list.pop(index)
+
+list7=[random.randint(10,99) for i in range (10)]
+list6 = [2,4,3,5,23,4,2,2,4,3]
+print(list6)
+remove_elements(list6, 2,3)
+print(list6)
+
